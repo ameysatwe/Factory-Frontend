@@ -1,0 +1,13 @@
+.table-container {
+    overflow-y: scroll;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 80%;
+    &:hover {
+        background-color: aquamarine;
+    }
+    //background-image: url('https://www.flaticon.com/authors/roundicons');
+    //Icons made by <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/"
+}
