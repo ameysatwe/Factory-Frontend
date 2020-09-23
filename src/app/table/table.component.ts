@@ -17,11 +17,14 @@ export class TableComponent implements OnInit {
 
     ngOnInit(): void {
         //console.log(this.tabular);
-        this.route.params.subscribe((params: Params) => {
-            this.helperService.getQueue(params.stuff).subscribe((res) => {
-                this.tabular = res;
-                console.log(this.tabular);
+        setInterval(() => {
+            this.route.params.subscribe((params: Params) => {
+                this.helperService.getQueue(params.stuff).subscribe((res) => {
+                    this.tabular = res;
+                    //console.log(this.tabular);
+                });
             });
-        });
+        }, 30);
     }
+    getQueue() {}
 }

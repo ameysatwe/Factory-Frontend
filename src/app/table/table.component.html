@@ -10,8 +10,12 @@
         <tbody>
             <tr *ngFor="let tab of tabular">
                 <td>{{ tab.id }}</td>
-                <td>{{ tab.expected_length }}m</td>
-                <td>{{ tab.expected_diameter }}m</td>
+                <td [ngClass]="{ completed: tab.completed }">
+                    {{ tab.expected_length }}m
+                </td>
+                <td [ngClass]="{ completed: tab.completed }">
+                    {{ tab.expected_diameter }}m
+                </td>
                 <td [ngClass]="{ completed: tab.completed }">
                     {{ tab.completed }}
                 </td>
