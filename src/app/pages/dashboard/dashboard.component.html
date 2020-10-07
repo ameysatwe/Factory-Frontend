@@ -1,0 +1,27 @@
+<div class="centered-content">
+    <div class="manager-container">
+        <div class="sidebar">
+            <div *ngFor="let item of factoryStats">
+                <p>Is the Factory online? => {{ item.online }}</p>
+            </div>
+        </div>
+
+        <div class="job-container">
+            <table>
+                <thead>
+                    <td>Machine Name</td>
+                    <td>Status</td>
+                    <td>RPM</td>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of machine_tables">
+                        <td>{{ item.name }}</td>
+
+                        <td>{{ item.online }}</td>
+                        <td>{{ item.rpm }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
