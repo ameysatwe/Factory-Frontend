@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
     constructor(private httpHelper: HelperService) {}
     ngOnInit(): void {
         this.gettingFacStats();
-        this.gettingMachineStats();
+        //this.gettingMachineStats();
     }
     gettingFacStats() {
         this.httpHelper.getQueue('factory').subscribe((item) => {
@@ -25,17 +25,20 @@ export class DashboardComponent implements OnInit {
                     this.machine_no.push(item[0][m]);
                 }
             });
-            this.machine_no.forEach((machine) => {
-                this.httpHelper.getQueue(`machine`).subscribe((item) => {
-                    console.log(item);
-                    this.machine_tables = item;
-                });
-            });
-            console.log(this.machine_no);
+            //1,2
+            console.log(this.machine_tables);
             this.factoryStats = item;
+            this.machine_no.forEach((machine) => {
+                this.httpHelper
+                    .getQueue(`machine/${machine}`)
+                    .subscribe((item) => {
+                        console.log(this.machine_tables);
+                        this.machine_tables.push(item);
+                    });
+            });
         });
     }
-    gettingMachineStats() {
-        console.log(this.machine_no);
-    }
+    // gettingMachineStats() {
+    //     console.log(this.machine_no);
+    // }
 }

@@ -3,11 +3,12 @@
         <div class="sidebar">
             <div *ngFor="let item of factoryStats">
                 <p>Is the Factory online? => {{ item.online }}</p>
+                <button [ngClass]="{ greenButton: item.online }"></button>
             </div>
         </div>
 
         <div class="job-container">
-            <table>
+            <table class="table">
                 <thead>
                     <td>Machine Name</td>
                     <td>Status</td>
@@ -22,6 +23,7 @@
                     </tr>
                 </tbody>
             </table>
+            <app-table></app-table>
         </div>
     </div>
 </div>
