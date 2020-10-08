@@ -8,37 +8,16 @@ import { HelperService } from 'src/app/helper.service';
     styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-    factoryStats = [];
-
-    machine_list = ['machine_one', 'machine_two', 'machine_three'];
-    machine_no = [];
-    machine_tables = [];
+    lists = [
+        { title: 'factory', name: 'factory' },
+        {
+            title: 'Queue',
+            name: 'queue',
+        },
+    ];
     constructor(private httpHelper: HelperService) {}
     ngOnInit(): void {
-        this.gettingFacStats();
         //this.gettingMachineStats();
     }
-    gettingFacStats() {
-        this.httpHelper.getQueue('factory').subscribe((item) => {
-            this.machine_list.forEach((m) => {
-                if (item[0][m] != undefined) {
-                    this.machine_no.push(item[0][m]);
-                }
-            });
-            //1,2
-            console.log(this.machine_tables);
-            this.factoryStats = item;
-            this.machine_no.forEach((machine) => {
-                this.httpHelper
-                    .getQueue(`machine/${machine}`)
-                    .subscribe((item) => {
-                        console.log(this.machine_tables);
-                        this.machine_tables.push(item);
-                    });
-            });
-        });
-    }
-    // gettingMachineStats() {
-    //     console.log(this.machine_no);
-    // }
+    showFactory() {}
 }

@@ -9,9 +9,15 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbSidebarModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { FactoryComponent } from './pages/factory/factory.component';
 
 @NgModule({
-    declarations: [AppComponent, TableComponent, DashboardComponent],
+    declarations: [
+        AppComponent,
+        TableComponent,
+        DashboardComponent,
+        FactoryComponent,
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,

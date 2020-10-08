@@ -18,7 +18,7 @@ export class TableComponent implements OnInit {
     ngOnInit(): void {
         //console.log(this.tabular);
         setInterval(() => {
-            this.helperService.getQueue('queue').subscribe((res) => {
+            this.helperService.get('queue').subscribe((res) => {
                 this.tabular = res;
                 //console.log(this.tabular);
             });
