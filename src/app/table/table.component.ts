@@ -9,20 +9,29 @@ import { HelperService } from '../helper.service';
 })
 export class TableComponent implements OnInit {
     tabular = [];
-
+    total=0;
     constructor(
         private helperService: HelperService,
         private route: ActivatedRoute
     ) {}
 
     ngOnInit(): void {
-        //console.log(this.tabular);
-        setInterval(() => {
-            this.helperService.get('queue').subscribe((res) => {
-                this.tabular = res;
-                //console.log(this.tabular);
-            });
-        }, 30);
+        const interval=setInterval(() => {
+                this.helperService.get('queue').subscribe((res) => {
+                    this.total=0
+                    this.tabular = res;
+                    res.forEach((element) => {
+                        if (element.completed==true){
+                            this.total+=1
+                        }
+                    });
+                    if(this.total==32){
+                        clearInterval(interval) //right now this function clears the interval if everything is true. but if its false the requests will keep running
+                    }
+                    console.log(this.total);
+                });
+            }, 3000);
+        
     }
     getQueue() {}
 }
